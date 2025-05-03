@@ -311,7 +311,7 @@ export default function Home() {
                   text: "LyceePlus m'a aidé à obtenir 18/20 en mathématiques au BAC. Les cours de mathématiques étaient particulièrement utiles !",
                 },
                 {
-                  name: "Boubacar Ouédraogo",
+                  name: "Nana Ouédraogo",
                   school: "Lycée Bogodogo",
                   image: "/demoImages/shimo-yann-Wt9FwGDvp5E-unsplash.jpg",
                   text: "J'ai obtenu une mention Très Bien au BAC grâce à LyceePlus. Les explications vidéo ont rendu les sujets complexes faciles à comprendre.",
@@ -323,7 +323,7 @@ export default function Home() {
                   text: "Les questions d'entraînement sur LyceePlus étaient très similaires à celles de l'examen réel. Je recommande vivement !",
                 },
               ].map((testimonial, i) => (
-                <Card key={i} className="overflow-hidden">
+                <Card key={i} className="overflow-hidden"> 
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <Image
@@ -331,7 +331,7 @@ export default function Home() {
                         alt={testimonial.name}
                         width={60}
                         height={60}
-                        className="rounded-full"
+                        className="rounded-full h-10 w-10 object-cover"
                       />
                       <div>
                         <h4 className="font-semibold">{testimonial.name}</h4>
