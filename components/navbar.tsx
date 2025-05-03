@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export function Navbar() {
   const pathname = usePathname()
@@ -108,6 +109,7 @@ export function Navbar() {
           )}
 
           <div className="flex items-center gap-2 ml-auto md:ml-0">
+            <ThemeToggle />
             <div className="flex items-center gap-4">
               <Button size="sm" className="md:hidden" asChild>
                 <Link href="/waitlist">Rejoindre la Liste d'Attente</Link>
