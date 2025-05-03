@@ -126,11 +126,11 @@ export default function Home() {
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
                 Votre plateforme d'apprentissage en ligne pour les cours BEPC & BAC
               </p>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button size="lg" className="font-medium" asChild>
+              <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 md:flex-row">
+                <Button size="lg" className="font-medium w-full md:w-auto" asChild>
                   <Link href="/courses">Explorer les Cours</Link>
                 </Button>
-                <Button size="lg" variant="outline" className="font-medium" asChild>
+                <Button size="lg" variant="outline" className="font-medium w-full md:w-auto" asChild>
                   <Link href="/waitlist">S'inscrire Gratuitement</Link>
                 </Button>
               </div>

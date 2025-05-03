@@ -51,18 +51,11 @@ export function Navbar() {
                 <Link href="/courses" className="text-lg font-medium">
                   Cours
                 </Link>
-                {/* <Link href="/profile" className="text-lg font-medium">
-                  My Learning
-                </Link> */}
-                {/* <Link href="/cart" className="text-lg font-medium">
-                  Cart
-                </Link> */}
               </nav>
             </SheetContent>
           </Sheet>
 
           <Link href="/" className="flex items-center gap-2 ml-4 md:ml-0">
-            {/* <Image src="/logo.svg" alt="LyceePlus" width={40} height={40} /> */}
             <span className="font-bold text-xl hidden md:inline-block">LyceePlus</span>
           </Link>
 
@@ -106,15 +99,6 @@ export function Navbar() {
                 >
                   Cours
                 </Link>
-                {/* <Link
-                  href="/profile"
-                  className={cn(
-                    "text-sm font-medium transition-colors hover:text-primary",
-                    pathname === "/profile" ? "text-primary" : "text-muted-foreground",
-                  )}
-                >
-                  My Learning
-                </Link> */}
               </nav>
               <Button variant="ghost" size="icon" className="ml-auto" onClick={() => setIsSearchOpen(true)}>
                 <Search className="h-5 w-5" />
@@ -124,20 +108,11 @@ export function Navbar() {
           )}
 
           <div className="flex items-center gap-2 ml-auto md:ml-0">
-            {/* <Link href="/cart">
-              <Button variant="ghost" size="icon">
-                <ShoppingCart className="h-5 w-5" />
-                <span className="sr-only">Cart</span>
+            <div className="flex items-center gap-4">
+              <Button size="sm" className="md:hidden" asChild>
+                <Link href="/waitlist">Rejoindre la Liste d'Attente</Link>
               </Button>
-            </Link>
-            <Link href="/profile">
-              <Button variant="ghost" size="icon">
-                <User className="h-5 w-5" />
-                <span className="sr-only">Profile</span>
-              </Button>
-            </Link> */}
-            <div className="hidden md:flex items-center gap-4">
-              <Button size="sm" asChild>
+              <Button size="sm" className="hidden md:flex" asChild>
                 <Link href="/waitlist">Rejoindre la Liste d'Attente</Link>
               </Button>
             </div>
