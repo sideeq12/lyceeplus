@@ -2,10 +2,14 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, BarChart2, CheckCircle2, Clock, Trophy, XCircle } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
 
 // Sample competition results data
 const competitionResults = {
@@ -100,7 +104,7 @@ const competitionResults = {
     {
       rank: 1,
       name: "Oluwaseun Adeyemi",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/demoImages/jeff-kweba--qh8PWfA-OE-unsplash.jpg",
       school: "Federal Government College, Lagos",
       score: 95,
       points: 480,
@@ -108,7 +112,7 @@ const competitionResults = {
     {
       rank: 2,
       name: "Ibrahim Musa",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/demoImages/iwaria-inc-KqERg6JywDk-unsplash.jpg",
       school: "Government College, Kano",
       score: 90,
       points: 450,
@@ -116,7 +120,7 @@ const competitionResults = {
     {
       rank: 3,
       name: "Chioma Okafor",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/demoImages/shimo-yann-Wt9FwGDvp5E-unsplash.jpg",
       school: "Queens College, Enugu",
       score: 90,
       points: 430,
@@ -160,4 +164,215 @@ export default function CompetitionResultsPage({ params }: { params: { id: strin
                 <Badge variant="outline" className="text-primary border-primary">
                   {competitionResults.subject}
                 </Badge>
-                <Badge variant="secondary">Completed</Badge>\
+                <Badge variant="secondary">Completed</Badge>
+              </div>
+              <h1 className="text-3xl font-bold mt-2">{competitionResults.title}</h1>
+              <p className="text-muted-foreground mt-1">{competitionResults.description}</p>
+            </div>
+            <div className="flex flex-col items-end gap-1">
+              <p className="text-sm text-muted-foreground">Date: {competitionResults.date}</p>
+              <p className="text-sm text-muted-foreground">{competitionResults.totalParticipants} participants</p>
+            </div>
+          </div>
+
+          {/* Results Tabs */}
+          <Tabs defaultValue="overview" className="space-y-6" onValueChange={setActiveTab}>
+            <TabsList>
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="questions">Questions</TabsTrigger>
+              <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
+              <TabsTrigger value="statistics">Statistics</TabsTrigger>
+            </TabsList>
+
+            {/* Overview Tab */}
+            <TabsContent value="overview" className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Your Performance</CardTitle>
+                  <CardDescription>Detailed breakdown of your quiz results</CardDescription>
+                </CardHeader>
+                <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="flex flex-col items-center p-4 rounded-lg bg-primary/5">
+                    <span className="text-4xl font-bold text-primary">{competitionResults.userResult.score}%</span>
+                    <span className="text-sm text-muted-foreground">Score</span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 rounded-lg bg-primary/5">
+                    <span className="text-4xl font-bold text-primary">{competitionResults.userResult.points}</span>
+                    <span className="text-sm text-muted-foreground">Points</span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 rounded-lg bg-primary/5">
+                    <span className="text-4xl font-bold text-primary">#{competitionResults.userResult.rank}</span>
+                    <span className="text-sm text-muted-foreground">Rank</span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 rounded-lg bg-primary/5">
+                    <span className="text-4xl font-bold text-primary">{competitionResults.userResult.percentile}%</span>
+                    <span className="text-sm text-muted-foreground">Percentile</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Question Analysis</CardTitle>
+                    <CardDescription>Breakdown of correct and incorrect answers</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="h-5 w-5 text-green-500" />
+                        <span>Correct Answers</span>
+                      </div>
+                      <span className="font-medium">{competitionResults.userResult.correctAnswers}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <XCircle className="h-5 w-5 text-red-500" />
+                        <span>Incorrect Answers</span>
+                      </div>
+                      <span className="font-medium">{competitionResults.userResult.incorrectAnswers}</span>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Time Analysis</CardTitle>
+                    <CardDescription>Average time spent per question</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-5 w-5 text-primary" />
+                      <span className="font-medium">
+                        {Math.round(
+                          competitionResults.questions.reduce((acc, q) => acc + q.timeTaken, 0) /
+                            competitionResults.questions.length
+                        )}{" "}
+                        seconds per question
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+
+            {/* Questions Tab */}
+            <TabsContent value="questions" className="space-y-4">
+              {competitionResults.questions.map((question) => (
+                <Card key={question.id} className={question.isCorrect ? "border-green-500" : "border-red-500"}>
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-lg">{question.text}</CardTitle>
+                      <div className="flex items-center gap-2">
+                        <Clock className="h-4 w-4 text-muted-foreground" />
+                        <span className="text-sm text-muted-foreground">{question.timeTaken}s</span>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {question.options.map((option) => (
+                        <div
+                          key={option.id}
+                          className={`p-3 rounded-lg ${
+                            option.id === question.correctAnswer
+                              ? "bg-green-500/10 border-green-500"
+                              : option.id === question.userAnswer && !question.isCorrect
+                              ? "bg-red-500/10 border-red-500"
+                              : "bg-muted"
+                          }`}
+                        >
+                          <span className="font-medium">{option.id.toUpperCase()}. </span>
+                          {option.text}
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </TabsContent>
+
+            {/* Leaderboard Tab */}
+            <TabsContent value="leaderboard" className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Top Performers</CardTitle>
+                  <CardDescription>Leading participants in this competition</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {competitionResults.topPerformers.map((performer) => (
+                    <div
+                      key={performer.rank}
+                      className="flex items-center justify-between p-4 rounded-lg bg-muted/50"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                          {performer.rank}
+                        </div>
+                        <div>
+                          <p className="font-medium">{performer.name}</p>
+                          <p className="text-sm text-muted-foreground">{performer.school}</p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-bold text-primary">{performer.points} pts</p>
+                        <p className="text-sm text-muted-foreground">{performer.score}%</p>
+                      </div>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Statistics Tab */}
+            <TabsContent value="statistics" className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Score Distribution</CardTitle>
+                  <CardDescription>How participants performed in this competition</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    {competitionResults.statistics.scoreDistribution.map((range) => (
+                      <div key={range.range} className="flex items-center gap-4">
+                        <span className="w-16 text-sm">{range.range}</span>
+                        <div className="flex-1 h-4 bg-muted rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-primary"
+                            style={{
+                              width: `${(range.count / competitionResults.totalParticipants) * 100}%`,
+                            }}
+                          />
+                        </div>
+                        <span className="w-12 text-sm text-right">{range.count}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+                    <div className="flex flex-col items-center p-4 rounded-lg bg-primary/5">
+                      <span className="text-2xl font-bold">{competitionResults.statistics.averageScore}%</span>
+                      <span className="text-sm text-muted-foreground">Average Score</span>
+                    </div>
+                    <div className="flex flex-col items-center p-4 rounded-lg bg-primary/5">
+                      <span className="text-2xl font-bold">{competitionResults.statistics.highestScore}%</span>
+                      <span className="text-sm text-muted-foreground">Highest Score</span>
+                    </div>
+                    <div className="flex flex-col items-center p-4 rounded-lg bg-primary/5">
+                      <span className="text-2xl font-bold">{competitionResults.statistics.lowestScore}%</span>
+                      <span className="text-sm text-muted-foreground">Lowest Score</span>
+                    </div>
+                    <div className="flex flex-col items-center p-4 rounded-lg bg-primary/5">
+                      <span className="text-2xl font-bold">{competitionResults.statistics.medianScore}%</span>
+                      <span className="text-sm text-muted-foreground">Median Score</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </main>
+      <Footer />
+    </>
+  )
+}
