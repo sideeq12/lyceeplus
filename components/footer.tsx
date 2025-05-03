@@ -1,5 +1,7 @@
 import Link from "next/link"
-import { BookOpen, Facebook, Instagram, Twitter } from "lucide-react"
+import { BookOpen, Facebook, Instagram, Twitter, Github } from "lucide-react"
+import Image from "next/image"
+import { Youtube } from "lucide-react"
 
 export function Footer() {
   return (
@@ -8,24 +10,24 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <BookOpen className="h-6 w-6" />
-              <span className="font-bold text-xl">ScholarBase</span>
+              <Image src="/logo.svg" alt="LyceePlus" width={40} height={40} />
+              <span className="font-bold">LyceePlus</span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Your ultimate platform for WAEC and JAMB preparation. Learn at your own pace with expert instructors.
+              Votre plateforme d'apprentissage en ligne pour exceller dans vos examens BEPC et BAC.
             </p>
             <div className="flex items-center gap-4">
-              <Link href="#" className="text-muted-foreground hover:text-primary">
+              <Link href="#" className="text-muted-foreground hover:text-foreground">
                 <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary">
+              <Link href="#" className="text-muted-foreground hover:text-foreground">
                 <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary">
+              <Link href="#" className="text-muted-foreground hover:text-foreground">
                 <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
+              </Link>
+              <Link href="#" className="text-muted-foreground hover:text-foreground">
+                <Youtube className="h-5 w-5" />
               </Link>
             </div>
           </div>
@@ -121,7 +123,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} ScholarBase. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} LyceePlus. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Filter, Search } from "lucide-react"
+import { Filter, Search, Video, BookOpen, Users } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
@@ -20,8 +20,8 @@ import { Footer } from "@/components/footer"
 const courses = [
   {
     id: "1",
-    title: "WAEC Mathematics Complete Course",
-    instructor: "Dr. Adebayo Johnson",
+    title: "Mathématiques pour le BEPC",
+    instructor: "Dr. Jean Kaboré",
     price: 15000,
     rating: 4.8,
     reviewCount: 342,
@@ -33,20 +33,20 @@ const courses = [
   },
   {
     id: "2",
-    title: "English Language for JAMB & WAEC",
-    instructor: "Prof. Chioma Okafor",
+    title: "Français pour le BEPC & BAC",
+    instructor: "Prof. Marie Diallo",
     price: 12500,
     rating: 4.7,
     reviewCount: 287,
     studentCount: 4876,
     image: "/demoImages/charles-hembaor-xjrz_Gjyk8A-unsplash.jpg",
-    category: "English",
+    category: "French",
     level: "Beginner" as const,
   },
   {
     id: "3",
-    title: "Physics Mastery: WAEC & JAMB Preparation",
-    instructor: "Engr. Tunde Bakare",
+    title: "Physique : Préparation BAC",
+    instructor: "Prof. Aminata Ouédraogo",
     price: 18000,
     rating: 4.9,
     reviewCount: 156,
@@ -57,8 +57,8 @@ const courses = [
   },
   {
     id: "4",
-    title: "Chemistry Comprehensive Guide",
-    instructor: "Dr. Fatima Ibrahim",
+    title: "Guide Complet de Chimie",
+    instructor: "Dr. Ibrahim Sanou",
     price: 16500,
     rating: 4.6,
     reviewCount: 203,
@@ -69,8 +69,8 @@ const courses = [
   },
   {
     id: "5",
-    title: "Biology: From Basics to Advanced",
-    instructor: "Dr. Emmanuel Osei",
+    title: "Biologie : Des Bases à l'Avancé",
+    instructor: "Dr. Fatoumata Traoré",
     price: 14000,
     rating: 4.7,
     reviewCount: 178,
@@ -82,31 +82,31 @@ const courses = [
   },
   {
     id: "6",
-    title: "Government & Politics for WAEC",
+    title: "Histoire-Géographie pour le BEPC",
     instructor: "Prof. Nkechi Eze",
     price: 13500,
     rating: 4.5,
     reviewCount: 132,
     studentCount: 1876,
     image: "/demoImages/smart-araromi-SsowBguJYbY-unsplash.jpg",
-    category: "Government",
+    category: "History",
     level: "Intermediate" as const,
   },
   {
     id: "7",
-    title: "Economics Simplified for JAMB",
-    instructor: "Dr. Oluwaseun Adeleke",
+    title: "Philosophie pour le BAC",
+    instructor: "Dr. Boureima Sawadogo",
     price: 15500,
     rating: 4.8,
     reviewCount: 165,
     studentCount: 2450,
     image: "/demoImages/cin-ezFAew1dUJg-unsplash.jpg",
-    category: "Economics",
+    category: "Philosophy",
     level: "Intermediate" as const,
   },
   {
     id: "8",
-    title: "Literature in English: Complete Guide",
+    title: "Littérature Française : Guide Complet",
     instructor: "Prof. Grace Adichie",
     price: 14500,
     rating: 4.6,
@@ -118,7 +118,7 @@ const courses = [
   },
   {
     id: "9",
-    title: "Geography for WAEC & JAMB",
+    title: "Géographie pour le BEPC & BAC",
     instructor: "Dr. Kofi Mensah",
     price: 13000,
     rating: 4.5,
@@ -130,7 +130,7 @@ const courses = [
   },
   {
     id: "10",
-    title: "Computer Science Fundamentals",
+    title: "Informatique : Fondamentaux",
     instructor: "Engr. Yusuf Ibrahim",
     price: 16000,
     rating: 4.7,
@@ -142,7 +142,7 @@ const courses = [
   },
   {
     id: "11",
-    title: "Accounting Principles for WAEC",
+    title: "Comptabilité pour le BAC",
     instructor: "Mrs. Folake Adeola",
     price: 14000,
     rating: 4.6,
@@ -154,20 +154,21 @@ const courses = [
   },
   {
     id: "12",
-    title: "Commerce and Trade for WAEC",
+    title: "Économie pour le BAC",
     instructor: "Mr. Chinedu Okonkwo",
     price: 12500,
     rating: 4.4,
     reviewCount: 110,
     studentCount: 1600,
     image: "/demoImages/tobie-eniafe-7EZfQdvDAl8-unsplash.jpg",
-    category: "Commerce",
+    category: "Economics",
     level: "Beginner" as const,
   },
 ]
 
 export default function CoursesPage() {
   const [searchQuery, setSearchQuery] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("all")
   const [priceRange, setPriceRange] = useState([0, 20000])
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [selectedLevel, setSelectedLevel] = useState<string>("")
@@ -187,7 +188,7 @@ export default function CoursesPage() {
     const matchesPrice = course.price >= priceRange[0] && course.price <= priceRange[1]
 
     // Category filter
-    const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(course.category)
+    const matchesCategory = selectedCategory === "all" || course.category === selectedCategory
 
     // Level filter
     const matchesLevel = selectedLevel === "" || course.level === selectedLevel
@@ -221,43 +222,38 @@ export default function CoursesPage() {
         <div className="flex flex-col space-y-6">
           {/* Page Header */}
           <div>
-            <h1 className="text-3xl font-bold">Explore Courses</h1>
-            <p className="text-muted-foreground mt-2">
-              Browse our collection of high-quality WAEC and JAMB preparation courses
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              Cours pour le BEPC & BAC
+            </h1>
+            <p className="max-w-[600px] text-muted-foreground md:text-xl">
+              Découvrez nos cours de haute qualité conçus pour vous aider à exceller dans vos examens nationaux.
             </p>
           </div>
 
           {/* Search and Filter Bar */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Search courses..."
-                className="pl-9"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-            <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-full sm:w-[180px]">
-                <SelectValue placeholder="Sort by" />
+          <div className="flex flex-col gap-4 sm:flex-row">
+            <Input
+              placeholder="Rechercher un cours..."
+              className="max-w-sm"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Toutes les matières" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="popular">Most Popular</SelectItem>
-                <SelectItem value="rating">Highest Rated</SelectItem>
-                <SelectItem value="newest">Newest</SelectItem>
-                <SelectItem value="price-low">Price: Low to High</SelectItem>
-                <SelectItem value="price-high">Price: High to Low</SelectItem>
+                <SelectItem value="all">Toutes les matières</SelectItem>
+                <SelectItem value="mathematics">Mathématiques</SelectItem>
+                <SelectItem value="french">Français</SelectItem>
+                <SelectItem value="physics">Physique</SelectItem>
+                <SelectItem value="chemistry">Chimie</SelectItem>
+                <SelectItem value="biology">Biologie</SelectItem>
+                <SelectItem value="history">Histoire-Géographie</SelectItem>
+                <SelectItem value="philosophy">Philosophie</SelectItem>
+                <SelectItem value="economics">Économie</SelectItem>
               </SelectContent>
             </Select>
-            <Button
-              variant="outline"
-              className="sm:hidden flex items-center gap-2"
-              onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
-            >
-              <Filter className="h-4 w-4" />
-              Filters
-            </Button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -278,8 +274,8 @@ export default function CoursesPage() {
                     onValueChange={setPriceRange}
                   />
                   <div className="flex items-center justify-between text-sm">
-                    <span>₦{priceRange[0].toLocaleString()}</span>
-                    <span>₦{priceRange[1].toLocaleString()}</span>
+                    <span>{priceRange[0].toLocaleString()} CFA</span>
+                    <span>{priceRange[1].toLocaleString()} CFA</span>
                   </div>
                 </div>
 
@@ -382,8 +378,8 @@ export default function CoursesPage() {
                       onValueChange={setPriceRange}
                     />
                     <div className="flex items-center justify-between text-sm">
-                      <span>₦{priceRange[0].toLocaleString()}</span>
-                      <span>₦{priceRange[1].toLocaleString()}</span>
+                      <span>{priceRange[0].toLocaleString()} CFA</span>
+                      <span>{priceRange[1].toLocaleString()} CFA</span>
                     </div>
                   </div>
 

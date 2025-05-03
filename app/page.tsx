@@ -13,100 +13,100 @@ import { Footer } from "@/components/footer"
 const courses = [
   {
     id: "1",
-    title: "WAEC Mathematics Complete Course",
-    instructor: "Dr. Adebayo Johnson",
-    price: 15000,
+    title: "Cours Complet de Mathématiques BPEC",
+    instructor: "Dr. Jean Kaboré",
+    price: 150000,
     rating: 4.8,
     reviewCount: 342,
     studentCount: 5243,
     image: "/demoImages/emmanuel-ikwuegbu-M-4lFg1Xfag-unsplash.jpg",
-    category: "Mathematics",
+    category: "Mathématiques",
     level: "Intermediate" as const,
     featured: true,
   },
   {
     id: "2",
-    title: "English Language for JAMB & WAEC",
-    instructor: "Prof. Chioma Okafor",
-    price: 12500,
+    title: "Langue Française pour BPEC & BAC",
+    instructor: "Prof. Marie Ouédraogo",
+    price: 125000,
     rating: 4.7,
     reviewCount: 287,
     studentCount: 4876,
     image: "/demoImages/charles-hembaor-xjrz_Gjyk8A-unsplash.jpg",
-    category: "English",
+    category: "Français",
     level: "Beginner" as const,
   },
   {
     id: "3",
-    title: "Physics Mastery: WAEC & JAMB Preparation",
-    instructor: "Engr. Tunde Bakare",
-    price: 18000,
+    title: "Maîtrise de la Physique : Préparation BPEC & BAC",
+    instructor: "Prof. Aminata Sawadogo",
+    price: 180000,
     rating: 4.9,
     reviewCount: 156,
     studentCount: 2345,
     image: "/demoImages/emmanuel-ikwuegbu-MUyq5MiVE2w-unsplash.jpg",
-    category: "Physics",
+    category: "Physique",
     level: "Advanced" as const,
   },
   {
     id: "4",
-    title: "Chemistry Comprehensive Guide",
-    instructor: "Dr. Fatima Ibrahim",
-    price: 16500,
+    title: "Guide Complet de Chimie",
+    instructor: "Dr. Boureima Kaboré",
+    price: 165000,
     rating: 4.6,
     reviewCount: 203,
     studentCount: 3120,
     image: "/demoImages/dj-tears-plk-EAq5eTq1OXQ-unsplash.jpg",
-    category: "Chemistry",
+    category: "Chimie",
     level: "Intermediate" as const,
   },
   {
     id: "5",
-    title: "Biology: From Basics to Advanced",
-    instructor: "Dr. Emmanuel Osei",
-    price: 14000,
+    title: "Biologie : Des Bases à l'Avancé",
+    instructor: "Dr. Fatoumata Ouédraogo",
+    price: 140000,
     rating: 4.7,
     reviewCount: 178,
     studentCount: 2890,
     image: "/demoImages/belinda-fewings-_CyyAj0QboY-unsplash.jpg",
-    category: "Biology",
+    category: "Biologie",
     level: "Beginner" as const,
     featured: true,
   },
   {
     id: "6",
-    title: "Government & Politics for WAEC",
-    instructor: "Prof. Nkechi Eze",
-    price: 13500,
+    title: "Histoire-Géographie pour BPEC",
+    instructor: "Prof. Salam Sawadogo",
+    price: 135000,
     rating: 4.5,
     reviewCount: 132,
     studentCount: 1876,
     image: "/demoImages/smart-araromi-SsowBguJYbY-unsplash.jpg",
-    category: "Government",
+    category: "Histoire-Géographie",
     level: "Intermediate" as const,
   },
   {
     id: "7",
-    title: "Economics Simplified for JAMB",
-    instructor: "Dr. Oluwaseun Adeleke",
-    price: 15500,
+    title: "Économie Simplifiée pour BAC",
+    instructor: "Dr. Ibrahim Kaboré",
+    price: 155000,
     rating: 4.8,
     reviewCount: 165,
     studentCount: 2450,
     image: "/demoImages/cin-ezFAew1dUJg-unsplash.jpg",
-    category: "Economics",
+    category: "Économie",
     level: "Intermediate" as const,
   },
   {
     id: "8",
-    title: "Literature in English: Complete Guide",
-    instructor: "Prof. Grace Adichie",
-    price: 14500,
+    title: "Philosophie : Guide Complet",
+    instructor: "Prof. Awa Ouédraogo",
+    price: 145000,
     rating: 4.6,
     reviewCount: 142,
     studentCount: 1980,
     image: "/demoImages/dahiru-wada-gunsau-UFyaTgd6UVE-unsplash.jpg",
-    category: "Literature",
+    category: "Philosophie",
     level: "Advanced" as const,
   },
 ]
@@ -120,30 +120,29 @@ export default function Home() {
         <section className="relative bg-gradient-to-b from-primary/20 to-background py-12 md:py-24">
           <div className="container grid gap-8 md:grid-cols-2 md:gap-12">
             <div className="flex flex-col justify-center space-y-4">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Ace Your WAEC & JAMB Exams with ScholarBase
+              <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+                Bienvenue sur LyceePlus
               </h1>
-              <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                Access high-quality courses designed specifically for Nigerian high school students. Learn at your own
-                pace and excel in your exams.
+              <p className="mt-6 text-lg leading-8 text-muted-foreground">
+                Votre plateforme d'apprentissage en ligne pour les cours BEPC & BAC
               </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button size="lg" className="font-medium">
-                  Explore Courses
+                <Button size="lg" className="font-medium" asChild>
+                  <Link href="/courses">Explorer les Cours</Link>
                 </Button>
-                <Button size="lg" variant="outline" className="font-medium">
-                  Sign Up Free
+                <Button size="lg" variant="outline" className="font-medium" asChild>
+                  <Link href="/waitlist">S'inscrire Gratuitement</Link>
                 </Button>
               </div>
               <div className="flex items-center gap-1 text-sm text-muted-foreground">
                 <Users className="h-4 w-4" />
-                <span>Join over 50,000 students already learning</span>
+                <span>Rejoignez plus de 50 000 étudiants déjà en formation</span>
               </div>
             </div>
             <div className="flex items-center justify-center">
               <Image
                 src="/demoImages/zach-wear-0XVJ5iMtRrQ-unsplash.jpg"
-                alt="Students learning"
+                alt="Étudiants en apprentissage"
                 width={500}
                 height={500}
                 className="rounded-lg object-cover"
@@ -161,7 +160,7 @@ export default function Home() {
                   <GraduationCap className="h-8 w-8 text-primary mb-2" />
                   <div className="text-center">
                     <h3 className="text-2xl font-bold">200+</h3>
-                    <p className="text-sm text-muted-foreground">Courses</p>
+                    <p className="text-sm text-muted-foreground">Cours</p>
                   </div>
                 </CardContent>
               </Card>
@@ -170,7 +169,7 @@ export default function Home() {
                   <Users className="h-8 w-8 text-primary mb-2" />
                   <div className="text-center">
                     <h3 className="text-2xl font-bold">50K+</h3>
-                    <p className="text-sm text-muted-foreground">Students</p>
+                    <p className="text-sm text-muted-foreground">Étudiants</p>
                   </div>
                 </CardContent>
               </Card>
@@ -179,7 +178,7 @@ export default function Home() {
                   <BookOpen className="h-8 w-8 text-primary mb-2" />
                   <div className="text-center">
                     <h3 className="text-2xl font-bold">15</h3>
-                    <p className="text-sm text-muted-foreground">Subjects</p>
+                    <p className="text-sm text-muted-foreground">Matières</p>
                   </div>
                 </CardContent>
               </Card>
@@ -188,7 +187,7 @@ export default function Home() {
                   <LayoutGrid className="h-8 w-8 text-primary mb-2" />
                   <div className="text-center">
                     <h3 className="text-2xl font-bold">98%</h3>
-                    <p className="text-sm text-muted-foreground">Success Rate</p>
+                    <p className="text-sm text-muted-foreground">Taux de Réussite</p>
                   </div>
                 </CardContent>
               </Card>
@@ -200,19 +199,19 @@ export default function Home() {
         <section className="py-12 md:py-16">
           <div className="container space-y-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Featured Courses</h2>
+              <h2 className="text-3xl font-bold tracking-tight">Pourquoi choisir LyceePlus ?</h2>
               <Link href="/courses" className="flex items-center text-sm font-medium text-primary">
-                View All
+                Voir Tout
                 <ChevronRight className="ml-1 h-4 w-4" />
               </Link>
             </div>
             <Tabs defaultValue="all" className="space-y-6">
               <TabsList className="flex flex-wrap">
-                <TabsTrigger value="all">All Subjects</TabsTrigger>
-                <TabsTrigger value="mathematics">Mathematics</TabsTrigger>
-                <TabsTrigger value="english">English</TabsTrigger>
+                <TabsTrigger value="all">Toutes les Matières</TabsTrigger>
+                <TabsTrigger value="mathematics">Mathématiques</TabsTrigger>
+                <TabsTrigger value="french">Français</TabsTrigger>
                 <TabsTrigger value="sciences">Sciences</TabsTrigger>
-                <TabsTrigger value="arts">Arts & Humanities</TabsTrigger>
+                <TabsTrigger value="humanities">Humanités</TabsTrigger>
               </TabsList>
               <TabsContent value="all" className="space-y-4">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -224,16 +223,16 @@ export default function Home() {
               <TabsContent value="mathematics" className="space-y-4">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                   {courses
-                    .filter((course) => course.category === "Mathematics")
+                    .filter((course) => course.category === "Mathématiques")
                     .map((course) => (
                       <CourseCard key={course.id} {...course} />
                     ))}
                 </div>
               </TabsContent>
-              <TabsContent value="english" className="space-y-4">
+              <TabsContent value="french" className="space-y-4">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                   {courses
-                    .filter((course) => course.category === "English")
+                    .filter((course) => course.category === "Français")
                     .map((course) => (
                       <CourseCard key={course.id} {...course} />
                     ))}
@@ -242,16 +241,16 @@ export default function Home() {
               <TabsContent value="sciences" className="space-y-4">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                   {courses
-                    .filter((course) => ["Physics", "Chemistry", "Biology"].includes(course.category))
+                    .filter((course) => ["Physique", "Chimie", "Biologie"].includes(course.category))
                     .map((course) => (
                       <CourseCard key={course.id} {...course} />
                     ))}
                 </div>
               </TabsContent>
-              <TabsContent value="arts" className="space-y-4">
+              <TabsContent value="humanities" className="space-y-4">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                   {courses
-                    .filter((course) => ["Government", "Literature"].includes(course.category))
+                    .filter((course) => ["Histoire-Géographie", "Philosophie", "Économie"].includes(course.category))
                     .map((course) => (
                       <CourseCard key={course.id} {...course} />
                     ))}
@@ -265,22 +264,22 @@ export default function Home() {
         <section className="bg-muted/40 py-12 md:py-16">
           <div className="container space-y-6">
             <div className="text-center space-y-2">
-              <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Browse by Category</h2>
-              <p className="text-muted-foreground">Find the perfect course for your exam preparation</p>
+              <h2 className="text-3xl font-bold tracking-tight">Nos cours populaires</h2>
+              <p className="text-muted-foreground">Trouvez le cours parfait pour votre préparation aux examens</p>
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
               {[
-                { name: "Mathematics", icon: "📊" },
-                { name: "English", icon: "📝" },
-                { name: "Physics", icon: "⚛️" },
-                { name: "Chemistry", icon: "🧪" },
-                { name: "Biology", icon: "🧬" },
-                { name: "Government", icon: "🏛️" },
-                { name: "Economics", icon: "📈" },
-                { name: "Literature", icon: "📚" },
-                { name: "Geography", icon: "🌍" },
-                { name: "Computer Science", icon: "💻" },
-                { name: "Accounting", icon: "🧮" },
+                { name: "Mathématiques", icon: "📊" },
+                { name: "Français", icon: "📝" },
+                { name: "Physique", icon: "⚛️" },
+                { name: "Chimie", icon: "🧪" },
+                { name: "Biologie", icon: "🧬" },
+                { name: "Histoire-Géographie", icon: "🏛️" },
+                { name: "Économie", icon: "📈" },
+                { name: "Philosophie", icon: "📚" },
+                { name: "SVT", icon: "🌍" },
+                { name: "Informatique", icon: "💻" },
+                { name: "Comptabilité", icon: "🧮" },
                 { name: "Commerce", icon: "🛒" },
               ].map((category) => (
                 <Link href={`/courses?category=${category.name.toLowerCase()}`} key={category.name}>
@@ -300,28 +299,28 @@ export default function Home() {
         <section className="py-12 md:py-16">
           <div className="container space-y-6">
             <div className="text-center space-y-2">
-              <h2 className="text-2xl font-bold tracking-tight md:text-3xl">What Our Students Say</h2>
-              <p className="text-muted-foreground">Hear from students who have achieved success with ScholarBase</p>
+              <h2 className="text-3xl font-bold tracking-tight">Ce que disent nos étudiants</h2>
+              <p className="text-muted-foreground">Découvrez les témoignages d'étudiants qui ont réussi avec LyceePlus</p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {[
                 {
-                  name: "Chioma Nwosu",
-                  school: "Federal Government College, Lagos",
+                  name: "Aminata Traoré",
+                  school: "Lycée Philippe Zinda Kaboré",
                   image: "/demoImages/jeff-kweba--qh8PWfA-OE-unsplash.jpg",
-                  text: "ScholarBase helped me score 298 in my JAMB. The Mathematics and Physics courses were particularly helpful!",
+                  text: "LyceePlus m'a aidé à obtenir 18/20 en mathématiques au BAC. Les cours de mathématiques étaient particulièrement utiles !",
                 },
                 {
-                  name: "Emeka Okonkwo",
-                  school: "Kings College, Lagos",
+                  name: "Boubacar Ouédraogo",
+                  school: "Lycée Bogodogo",
                   image: "/demoImages/shimo-yann-Wt9FwGDvp5E-unsplash.jpg",
-                  text: "I got straight A's in my WAEC exams thanks to ScholarBase. The video explanations made complex topics easy to understand.",
+                  text: "J'ai obtenu une mention Très Bien au BAC grâce à LyceePlus. Les explications vidéo ont rendu les sujets complexes faciles à comprendre.",
                 },
                 {
-                  name: "Amina Mohammed",
-                  school: "Queens College, Lagos",
+                  name: "Fatoumata Diallo",
+                  school: "Lycée Nelson Mandela",
                   image: "/demoImages/iwaria-inc-KqERg6JywDk-unsplash.jpg",
-                  text: "The practice questions on ScholarBase were very similar to what appeared in my actual exams. Highly recommended!",
+                  text: "Les questions d'entraînement sur LyceePlus étaient très similaires à celles de l'examen réel. Je recommande vivement !",
                 },
               ].map((testimonial, i) => (
                 <Card key={i} className="overflow-hidden">
@@ -350,16 +349,16 @@ export default function Home() {
         {/* CTA Section */}
         <section className="bg-primary text-primary-foreground py-12 md:py-16">
           <div className="container text-center space-y-6">
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Ready to Excel in Your Exams?</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Rejoignez LyceePlus aujourd'hui</h2>
             <p className="mx-auto max-w-[600px]">
-              Join thousands of students who have transformed their academic performance with ScholarBase.
+              Rejoignez des milliers d'étudiants qui ont transformé leurs performances académiques avec LyceePlus.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button size="lg" variant="secondary">
-                Get Started Free
+                Commencer Gratuitement
               </Button>
               <Button size="lg" variant="outline" className="bg-transparent">
-                Explore Courses
+                Explorer les Cours
               </Button>
             </div>
           </div>

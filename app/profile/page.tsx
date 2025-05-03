@@ -8,69 +8,75 @@ import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { Badge } from "@/components/ui/badge"
+import { CardDescription } from "@/components/ui/card"
+import { CheckCircle, Trophy } from "lucide-react"
 
 // Sample user data
 const user = {
-  name: "Oluwaseun Adeyemi",
-  email: "oluwaseun@example.com",
+  name: "Aminata Ouédraogo",
+  email: "aminata.ouedraogo@example.com",
   image: "/demoImages/francis-odeyemi-AHvLXqAamC8-unsplash.jpg",
+  level: "Terminale",
+  school: "Lycée Philippe Zinda Kaboré",
+  location: "Ouagadougou",
   enrolledCourses: [
     {
       id: "1",
-      title: "WAEC Mathematics Complete Course",
-      instructor: "Dr. Adebayo Johnson",
-      image: "/placeholder.svg?height=200&width=400",
+      title: "Mathématiques pour le BEPC",
+      instructor: "Dr. Jean Kaboré",
+      image: "/demoImages/emmanuel-ikwuegbu-M-4lFg1Xfag-unsplash.jpg",
       progress: 65,
-      lastAccessed: "2 days ago",
-      nextLesson: "Quadratic Equations",
+      lastAccessed: "il y a 2 jours",
+      nextLesson: "Équations du Second Degré",
     },
     {
       id: "3",
-      title: "Physics Mastery: WAEC & JAMB Preparation",
-      instructor: "Engr. Tunde Bakare",
-      image: "/placeholder.svg?height=200&width=400",
+      title: "Physique : Préparation BAC",
+      instructor: "Prof. Aminata Ouédraogo",
+      image: "/demoImages/emmanuel-ikwuegbu-MUyq5MiVE2w-unsplash.jpg",
       progress: 30,
-      lastAccessed: "1 week ago",
-      nextLesson: "Newton's Laws of Motion",
+      lastAccessed: "il y a 1 semaine",
+      nextLesson: "Les Lois de Newton",
     },
     {
       id: "5",
-      title: "Biology: From Basics to Advanced",
-      instructor: "Dr. Emmanuel Osei",
-      image: "/placeholder.svg?height=200&width=400",
+      title: "Biologie : Des Bases à l'Avancé",
+      instructor: "Dr. Fatoumata Traoré",
+      image: "/demoImages/belinda-fewings-_CyyAj0QboY-unsplash.jpg",
       progress: 10,
-      lastAccessed: "2 weeks ago",
-      nextLesson: "Cell Structure and Function",
+      lastAccessed: "il y a 2 semaines",
+      nextLesson: "Structure et Fonction de la Cellule",
     },
   ],
   completedCourses: [
     {
       id: "2",
-      title: "English Language for JAMB & WAEC",
-      instructor: "Prof. Chioma Okafor",
-      image: "/placeholder.svg?height=200&width=400",
-      completedDate: "3 months ago",
+      title: "Français pour le BEPC & BAC",
+      instructor: "Prof. Marie Diallo",
+      image: "/demoImages/charles-hembaor-xjrz_Gjyk8A-unsplash.jpg",
+      completedDate: "il y a 3 mois",
       certificate: true,
     },
   ],
   wishlist: [
     {
       id: "4",
-      title: "Chemistry Comprehensive Guide",
-      instructor: "Dr. Fatima Ibrahim",
+      title: "Guide Complet de Chimie",
+      instructor: "Dr. Ibrahim Sanou",
       price: 16500,
       rating: 4.6,
       reviewCount: 203,
-      image: "/demoImages/steward-masweneng-HStSHE55C5k-unsplash.jpg",
+      image: "/demoImages/dj-tears-plk-EAq5eTq1OXQ-unsplash.jpg",
     },
     {
       id: "6",
-      title: "Government & Politics for WAEC",
+      title: "Histoire-Géographie pour le BEPC",
       instructor: "Prof. Nkechi Eze",
       price: 13500,
       rating: 4.5,
       reviewCount: 132,
-      image: "/demoImages/tobie-eniafe-7EZfQdvDAl8-unsplash.jpg",
+      image: "/demoImages/smart-araromi-SsowBguJYbY-unsplash.jpg",
     },
   ],
 }
@@ -99,34 +105,34 @@ export default function ProfilePage() {
                   <div className="mt-4 w-full">
                     <Button variant="outline" className="w-full gap-2">
                       <Settings className="h-4 w-4" />
-                      Edit Profile
+                      Modifier le Profil
                     </Button>
                   </div>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">Learning Statistics</CardTitle>
+                  <CardTitle className="text-lg">Statistiques d'Apprentissage</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <BookOpen className="h-5 w-5 text-primary" />
-                      <span className="text-sm">Courses Enrolled</span>
+                      <span className="text-sm">Cours Inscrits</span>
                     </div>
                     <span className="font-bold">{user.enrolledCourses.length + user.completedCourses.length}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <GraduationCap className="h-5 w-5 text-primary" />
-                      <span className="text-sm">Courses Completed</span>
+                      <span className="text-sm">Cours Terminés</span>
                     </div>
                     <span className="font-bold">{user.completedCourses.length}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Clock className="h-5 w-5 text-primary" />
-                      <span className="text-sm">Hours Learned</span>
+                      <span className="text-sm">Heures d'Apprentissage</span>
                     </div>
                     <span className="font-bold">42</span>
                   </div>
@@ -139,12 +145,12 @@ export default function ProfilePage() {
           <div className="md:col-span-3 space-y-6">
             <Tabs defaultValue="my-learning" className="space-y-4">
               <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="my-learning">My Learning</TabsTrigger>
-                <TabsTrigger value="completed">Completed</TabsTrigger>
-                <TabsTrigger value="wishlist">Wishlist</TabsTrigger>
+                <TabsTrigger value="my-learning">Mon Apprentissage</TabsTrigger>
+                <TabsTrigger value="completed">Terminés</TabsTrigger>
+                <TabsTrigger value="wishlist">Liste de Souhaits</TabsTrigger>
               </TabsList>
               <TabsContent value="my-learning" className="space-y-4">
-                <h2 className="text-2xl font-bold">My Learning</h2>
+                <h2 className="text-2xl font-bold">Mon Apprentissage</h2>
                 {user.enrolledCourses.length > 0 ? (
                   <div className="grid gap-6 sm:grid-cols-2">
                     {user.enrolledCourses.map((course) => (
@@ -159,22 +165,22 @@ export default function ProfilePage() {
                         </div>
                         <CardHeader className="p-4">
                           <CardTitle className="line-clamp-1 text-lg">{course.title}</CardTitle>
-                          <p className="text-sm text-muted-foreground">Instructor: {course.instructor}</p>
+                          <p className="text-sm text-muted-foreground">Instructeur : {course.instructor}</p>
                         </CardHeader>
                         <CardContent className="p-4 pt-0 space-y-2">
                           <div className="flex items-center justify-between text-sm">
-                            <span>Progress</span>
+                            <span>Progression</span>
                             <span>{course.progress}%</span>
                           </div>
                           <Progress value={course.progress} className="h-2" />
-                          <p className="text-sm text-muted-foreground">Last accessed {course.lastAccessed}</p>
+                          <p className="text-sm text-muted-foreground">Dernier accès {course.lastAccessed}</p>
                           <p className="text-sm">
-                            Next lesson: <span className="font-medium">{course.nextLesson}</span>
+                            Prochaine leçon : <span className="font-medium">{course.nextLesson}</span>
                           </p>
                         </CardContent>
                         <CardFooter className="p-4 pt-0">
                           <Link href={`/learning/${course.id}`} className="w-full">
-                            <Button className="w-full">Continue Learning</Button>
+                            <Button className="w-full">Continuer l'Apprentissage</Button>
                           </Link>
                         </CardFooter>
                       </Card>
@@ -186,14 +192,13 @@ export default function ProfilePage() {
                       <div className="flex flex-col items-center justify-center space-y-4">
                         <BookOpen className="h-12 w-12 text-muted-foreground" />
                         <div className="space-y-2">
-                          <h3 className="text-xl font-semibold">No courses yet</h3>
+                          <h3 className="text-xl font-semibold">Aucun cours pour le moment</h3>
                           <p className="text-muted-foreground">
-                            You haven't enrolled in any courses yet. Browse our catalog to find courses that interest
-                            you.
+                            Vous n'êtes pas encore inscrit à des cours. Parcourez notre catalogue pour trouver des cours qui vous intéressent.
                           </p>
                         </div>
                         <Button asChild>
-                          <Link href="/courses">Browse Courses</Link>
+                          <Link href="/courses">Parcourir les Cours</Link>
                         </Button>
                       </div>
                     </CardContent>
@@ -201,7 +206,7 @@ export default function ProfilePage() {
                 )}
               </TabsContent>
               <TabsContent value="completed" className="space-y-4">
-                <h2 className="text-2xl font-bold">Completed Courses</h2>
+                <h2 className="text-2xl font-bold">Cours Terminés</h2>
                 {user.completedCourses.length > 0 ? (
                   <div className="grid gap-6 sm:grid-cols-2">
                     {user.completedCourses.map((course) => (
@@ -223,21 +228,21 @@ export default function ProfilePage() {
                         </div>
                         <CardHeader className="p-4">
                           <CardTitle className="line-clamp-1 text-lg">{course.title}</CardTitle>
-                          <p className="text-sm text-muted-foreground">Instructor: {course.instructor}</p>
+                          <p className="text-sm text-muted-foreground">Instructeur : {course.instructor}</p>
                         </CardHeader>
                         <CardContent className="p-4 pt-0 space-y-2">
-                          <p className="text-sm text-muted-foreground">Completed {course.completedDate}</p>
+                          <p className="text-sm text-muted-foreground">Terminé {course.completedDate}</p>
                           <Progress value={100} className="h-2" />
                         </CardContent>
                         <CardFooter className="p-4 pt-0 flex gap-2">
                           <Link href={`/courses/${course.id}`} className="flex-1">
                             <Button variant="outline" className="w-full">
-                              Review Course
+                              Revoir le Cours
                             </Button>
                           </Link>
                           {course.certificate && (
                             <Link href={`/certificates/${course.id}`} className="flex-1">
-                              <Button className="w-full">View Certificate</Button>
+                              <Button className="w-full">Voir le Certificat</Button>
                             </Link>
                           )}
                         </CardFooter>
@@ -250,13 +255,13 @@ export default function ProfilePage() {
                       <div className="flex flex-col items-center justify-center space-y-4">
                         <GraduationCap className="h-12 w-12 text-muted-foreground" />
                         <div className="space-y-2">
-                          <h3 className="text-xl font-semibold">No completed courses</h3>
+                          <h3 className="text-xl font-semibold">Aucun cours terminé</h3>
                           <p className="text-muted-foreground">
-                            You haven't completed any courses yet. Continue learning to earn certificates.
+                            Vous n'avez pas encore terminé de cours. Continuez à apprendre pour obtenir des certificats.
                           </p>
                         </div>
                         <Button asChild>
-                          <Link href="/profile">Go to My Learning</Link>
+                          <Link href="/profile">Aller à Mon Apprentissage</Link>
                         </Button>
                       </div>
                     </CardContent>
@@ -298,7 +303,7 @@ export default function ProfilePage() {
                             </div>
                             <span className="text-xs text-muted-foreground">({course.reviewCount})</span>
                           </div>
-                          <div className="font-bold">₦{course.price.toLocaleString()}</div>
+                          <div className="font-bold">{course.price.toLocaleString()} CFA</div>
                         </CardContent>
                         <CardFooter className="p-4 pt-0 flex gap-2">
                           <Link href={`/courses/${course.id}`} className="flex-1">

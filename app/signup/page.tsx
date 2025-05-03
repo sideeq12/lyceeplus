@@ -111,9 +111,9 @@ export default function SignUpPage() {
 
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center">Create an account</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">Créer un compte LyceePlus</CardTitle>
           <CardDescription className="text-center">
-            Enter your information to create your ScholarBase account
+            Entrez votre email ci-dessous pour créer votre compte
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -136,7 +136,7 @@ export default function SignUpPage() {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="name@example.com"
+                placeholder="nom@exemple.com"
                 value={formData.email}
                 onChange={handleChange}
                 disabled={isLoading}
@@ -144,7 +144,7 @@ export default function SignUpPage() {
               {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Mot de Passe</Label>
               <div className="relative">
                 <Input
                   id="password"
@@ -204,7 +204,7 @@ export default function SignUpPage() {
                   Creating account...
                 </>
               ) : (
-                "Create Account"
+                "Créer un Compte"
               )}
             </Button>
           </form>

@@ -13,6 +13,10 @@ import {
   MessageSquare,
   PlayCircle,
   X,
+  Share2,
+  Bookmark,
+  Check,
+  Play,
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -190,17 +194,21 @@ export default function LearningPage() {
               <span className="sr-only">Back to My Learning</span>
             </Link>
             <div>
-              <h1 className="text-xl font-bold line-clamp-1">{course.title}</h1>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <span>
-                  {course.currentModule} - {course.currentLesson}
-                </span>
-                <div className="hidden md:flex items-center gap-1">
-                  <span>
-                    {completedLessons}/{totalLessons} lessons completed
-                  </span>
-                  <Progress value={(completedLessons / totalLessons) * 100} className="h-2 w-20" />
-                </div>
+              <div className="flex flex-col space-y-2">
+                <h1 className="text-2xl font-semibold tracking-tight">{course.title}</h1>
+                <p className="text-sm text-muted-foreground">
+                  Par {course.instructor} • {course.studentCount} étudiants • {course.rating} ⭐
+                </p>
+              </div>
+              <div className="flex items-center gap-4">
+                <Button variant="outline" size="sm">
+                  <Share2 className="mr-2 h-4 w-4" />
+                  Partager
+                </Button>
+                <Button variant="outline" size="sm">
+                  <Bookmark className="mr-2 h-4 w-4" />
+                  Sauvegarder
+                </Button>
               </div>
             </div>
             <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>

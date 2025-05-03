@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { CalendarDays, Clock, Trophy, Users, ArrowRight, Timer } from "lucide-react"
+import { CalendarDays, Clock, Trophy, Users, ArrowRight, Timer, Filter, SortAsc } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -126,11 +126,21 @@ export default function QuizCompetitionsPage() {
       <main className="container py-8">
         <div className="space-y-8">
           {/* Page Header */}
-          <div>
-            <h1 className="text-3xl font-bold">Quiz Competitions</h1>
-            <p className="text-muted-foreground mt-2">
-              Compete with students across Nigeria in real-time quiz competitions and win prizes
+          <div className="flex flex-col space-y-2">
+            <h1 className="text-2xl font-semibold tracking-tight">Concours LyceePlus</h1>
+            <p className="text-sm text-muted-foreground">
+              Participez à nos compétitions de quiz et gagnez des prix
             </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <Button variant="outline" size="sm">
+              <Filter className="mr-2 h-4 w-4" />
+              Filtrer
+            </Button>
+            <Button variant="outline" size="sm">
+              <SortAsc className="mr-2 h-4 w-4" />
+              Trier
+            </Button>
           </div>
 
           {/* Hero Banner */}

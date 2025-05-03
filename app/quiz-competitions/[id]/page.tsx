@@ -83,7 +83,7 @@ export default function CompetitionDetailsPage({ params }: { params: { id: strin
                   {competitionData.registrationOpen ? "Registration Open" : "Registration Closed"}
                 </Badge>
               </div>
-              <h1 className="text-3xl font-bold">{competitionData.title}</h1>
+              <h1 className="text-2xl font-bold">Concours LyceePlus</h1>
               <p className="text-muted-foreground">{competitionData.description}</p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">

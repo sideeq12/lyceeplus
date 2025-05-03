@@ -6,8 +6,8 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "ScholarBase - Learn WAEC & JAMB Courses",
-  description: "Educational platform for high school students preparing for WAEC and JAMB examinations",
+  title: "LyceePlus - Apprenez les Cours BEPC & BAC",
+  description: "Plateforme d'apprentissage en ligne pour les examens BEPC et BAC",
     generator: 'v0.dev'
 }
 

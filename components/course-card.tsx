@@ -72,7 +72,10 @@ export function CourseCard({
           </div>
         </CardContent>
         <CardFooter className="p-4 pt-0">
-          <div className="font-bold">₦{price.toLocaleString()}</div>
+          <div className="flex items-center gap-2">
+            <span className="font-bold line-through text-muted-foreground">3 500 CFA</span>
+            <span className="font-bold text-green-600">Gratuit</span>
+          </div>
         </CardFooter>
       </Card>
     </Link>

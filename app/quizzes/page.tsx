@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Calendar, Clock, Trophy } from "lucide-react"
+import { Calendar, Clock, Trophy, Filter, SortAsc } from "lucide-react"
 import Link from "next/link"
 
 import { Badge } from "@/components/ui/badge"
@@ -103,10 +103,22 @@ export default function QuizzesPage() {
         <div className="space-y-8">
           {/* Page Header */}
           <div className="text-center">
-            <h1 className="text-3xl font-bold">Quizzes</h1>
-            <p className="text-muted-foreground mt-2">
-              Test your knowledge with our daily, weekly, and monthly quizzes
-            </p>
+            <div className="flex flex-col space-y-2">
+              <h1 className="text-2xl font-semibold tracking-tight">Quiz</h1>
+              <p className="text-sm text-muted-foreground">
+                Testez vos connaissances avec nos quiz interactifs
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
+              <Button variant="outline" size="sm">
+                <Filter className="mr-2 h-4 w-4" />
+                Filtrer
+              </Button>
+              <Button variant="outline" size="sm">
+                <SortAsc className="mr-2 h-4 w-4" />
+                Trier
+              </Button>
+            </div>
           </div>
 
           {/* Quiz Tabs */}

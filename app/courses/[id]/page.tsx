@@ -9,106 +9,131 @@ import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+import { Play } from "lucide-react"
 
-// Sample course data
-const course = {
-  id: "1",
-  title: "WAEC Mathematics Complete Course",
-  instructor: "Dr. Adebayo Johnson",
-  price: 15000,
-  rating: 4.8,
-  reviewCount: 342,
-  studentCount: 5243,
-  image: "/demoImages/emmanuel-ikwuegbu-M-4lFg1Xfag-unsplash.jpg",
-  category: "Mathematics",
-  level: "Intermediate",
-  language: "English",
-  lastUpdated: "March 2023",
-  description:
-    "This comprehensive course covers all the Mathematics topics required for the WAEC examination. From Algebra to Calculus, Geometry to Statistics, this course will prepare you thoroughly for success in your Mathematics exam.",
-  whatYouWillLearn: [
-    "Master all mathematical concepts required for WAEC",
-    "Solve complex mathematical problems with ease",
-    "Understand the application of mathematical principles",
-    "Develop effective problem-solving techniques",
-    "Practice with past WAEC questions and solutions",
-    "Learn time-saving tips for the examination",
-  ],
-  courseContent: [
-    {
-      title: "Introduction to WAEC Mathematics",
-      lessons: [
-        { title: "Course Overview", duration: "10:15", preview: true },
-        { title: "Understanding the WAEC Mathematics Syllabus", duration: "15:30", preview: false },
-        { title: "Examination Format and Marking Scheme", duration: "12:45", preview: false },
-      ],
-    },
-    {
-      title: "Number and Numeration",
-      lessons: [
-        { title: "Number Bases", duration: "25:10", preview: false },
-        { title: "Fractions, Decimals and Approximations", duration: "30:45", preview: false },
-        { title: "Indices, Logarithms and Surds", duration: "28:20", preview: false },
-        { title: "Sequence and Series", duration: "22:15", preview: false },
-      ],
-    },
-    {
-      title: "Algebra",
-      lessons: [
-        { title: "Algebraic Expressions", duration: "20:30", preview: false },
-        { title: "Simple Equations and Inequalities", duration: "25:15", preview: false },
-        { title: "Quadratic Equations", duration: "28:40", preview: false },
-        { title: "Variation", duration: "18:25", preview: false },
-        { title: "Matrices and Determinants", duration: "35:10", preview: false },
-      ],
-    },
-    {
-      title: "Geometry and Trigonometry",
-      lessons: [
-        { title: "Angles and Polygons", duration: "22:35", preview: false },
-        { title: "Circles and Constructions", duration: "26:50", preview: false },
-        { title: "Trigonometric Ratios", duration: "30:15", preview: false },
-        { title: "Mensuration", duration: "28:20", preview: false },
-      ],
-    },
-    {
-      title: "Statistics and Probability",
-      lessons: [
-        { title: "Data Presentation and Analysis", duration: "24:45", preview: false },
-        { title: "Measures of Central Tendency", duration: "22:30", preview: false },
-        { title: "Probability", duration: "26:15", preview: false },
-      ],
-    },
-  ],
-  reviews: [
-    {
-      name: "Oluwaseun Adeyemi",
-      rating: 5,
-      date: "2 months ago",
-      comment:
-        "This course helped me score an A1 in my WAEC Mathematics. The explanations are clear and the practice questions are very similar to the actual exam questions.",
-      image: "/demoImages/jeff-kweba--qh8PWfA-OE-unsplash.jpg",
-    },
-    {
-      name: "Chidinma Okonkwo",
-      rating: 4,
-      date: "3 months ago",
-      comment:
-        "Very comprehensive course. The instructor explains complex concepts in a simple way. I particularly enjoyed the sections on Algebra and Trigonometry.",
-      image: "/demoImages/shimo-yann-Wt9FwGDvp5E-unsplash.jpg",
-    },
-    {
-      name: "Ibrahim Musa",
-      rating: 5,
-      date: "1 month ago",
-      comment:
-        "Best Mathematics course I've taken. The practice questions and past papers section is invaluable. Highly recommended for all WAEC candidates.",
-      image: "/demoImages/iwaria-inc-KqERg6JywDk-unsplash.jpg",
-    },
-  ],
-}
+// Sample course data - this would typically come from your database
+const courses = [
+  {
+    id: "1",
+    title: "WAEC Mathematics Complete Course",
+    instructor: "Dr. Adebayo Johnson",
+    price: 15000,
+    rating: 4.8,
+    reviewCount: 342,
+    studentCount: 5243,
+    image: "/demoImages/emmanuel-ikwuegbu-M-4lFg1Xfag-unsplash.jpg",
+    category: "Mathematics",
+    level: "Intermediate",
+    language: "English",
+    lastUpdated: "March 2023",
+    description:
+      "Ce cours complet couvre tous les sujets de mathématiques requis pour l'examen BPEC. De l'algèbre au calcul, de la géométrie aux statistiques, ce cours vous préparera parfaitement pour réussir votre examen de mathématiques.",
+    whatYouWillLearn: [
+      "Maîtriser tous les concepts mathématiques requis pour le BPEC",
+      "Résoudre des problèmes mathématiques complexes avec facilité",
+      "Comprendre l'application des principes mathématiques",
+      "Développer des techniques efficaces de résolution de problèmes",
+      "S'entraîner avec des questions et solutions des examens BPEC précédents",
+      "Apprendre des astuces pour gagner du temps pendant l'examen",
+    ],
+    courseContent: [
+      {
+        title: "Introduction aux Mathématiques BPEC",
+        lessons: [
+          { title: "Aperçu du Cours", duration: "10:15", preview: true },
+          { title: "Comprendre le Programme de Mathématiques BPEC", duration: "15:30", preview: false },
+          { title: "Format de l'Examen et Barème de Notation", duration: "12:45", preview: false },
+        ],
+      },
+      {
+        title: "Nombres et Numération",
+        lessons: [
+          { title: "Bases Numériques", duration: "25:10", preview: false },
+          { title: "Fractions, Nombres Décimaux et Approximations", duration: "30:45", preview: false },
+          { title: "Indices, Logarithmes et Radicaux", duration: "28:20", preview: false },
+          { title: "Suites et Séries", duration: "22:15", preview: false },
+        ],
+      },
+      {
+        title: "Algèbre",
+        lessons: [
+          { title: "Expressions Algébriques", duration: "20:30", preview: false },
+          { title: "Équations Simples et Inéquations", duration: "25:15", preview: false },
+          { title: "Équations Quadratiques", duration: "28:40", preview: false },
+          { title: "Variation", duration: "18:25", preview: false },
+          { title: "Matrices et Déterminants", duration: "35:10", preview: false },
+        ],
+      },
+      {
+        title: "Géométrie et Trigonométrie",
+        lessons: [
+          { title: "Angles et Polygones", duration: "22:35", preview: false },
+          { title: "Cercles et Constructions", duration: "26:50", preview: false },
+          { title: "Rapports Trigonométriques", duration: "30:15", preview: false },
+          { title: "Mensuration", duration: "28:20", preview: false },
+        ],
+      },
+      {
+        title: "Statistiques et Probabilités",
+        lessons: [
+          { title: "Présentation et Analyse des Données", duration: "24:45", preview: false },
+          { title: "Mesures de la Tendance Centrale", duration: "22:30", preview: false },
+          { title: "Probabilités", duration: "26:15", preview: false },
+        ],
+      },
+    ],
+    reviews: [
+      {
+        name: "Oluwaseun Adeyemi",
+        rating: 5,
+        date: "il y a 2 mois",
+        comment:
+          "Ce cours m'a aidé à obtenir un A1 en mathématiques BPEC. Les explications sont claires et les questions d'entraînement sont très similaires aux questions réelles de l'examen.",
+        image: "/demoImages/jeff-kweba--qh8PWfA-OE-unsplash.jpg",
+      },
+      {
+        name: "Chidinma Okonkwo",
+        rating: 4,
+        date: "il y a 3 mois",
+        comment:
+          "Cours très complet. L'instructeur explique les concepts complexes de manière simple. J'ai particulièrement apprécié les sections sur l'algèbre et la trigonométrie.",
+        image: "/demoImages/shimo-yann-Wt9FwGDvp5E-unsplash.jpg",
+      },
+      {
+        name: "Ibrahim Musa",
+        rating: 5,
+        date: "il y a 1 mois",
+        comment:
+          "Meilleur cours de mathématiques que j'ai suivi. La section des questions d'entraînement et des examens précédents est inestimable. Fortement recommandé pour tous les candidats BPEC.",
+        image: "/demoImages/iwaria-inc-KqERg6JywDk-unsplash.jpg",
+      },
+    ],
+  },
+  // ... other courses
+]
 
-export default function CoursePage() {
+export default function CoursePage({ params }: { params: { id: string } }) {
+  const course = courses.find(c => c.id === params.id)
+
+  if (!course) {
+    return (
+      <>
+        <Navbar />
+        <main className="container py-8">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold">Cours non trouvé</h1>
+            <p className="text-muted-foreground mt-2">Le cours que vous recherchez n'existe pas.</p>
+            <Link href="/courses">
+              <Button className="mt-4">Retour aux Cours</Button>
+            </Link>
+          </div>
+        </main>
+        <Footer />
+      </>
+    )
+  }
+
   return (
     <>
       <Navbar />
@@ -117,75 +142,58 @@ export default function CoursePage() {
           <div className="md:col-span-2 space-y-8">
             {/* Course Header */}
             <div>
-              <h1 className="text-2xl font-bold md:text-3xl">{course.title}</h1>
-              <p className="mt-2 text-lg text-muted-foreground">{course.description}</p>
-              <div className="mt-4 flex flex-wrap items-center gap-4">
-                <div className="flex items-center gap-1">
-                  <Badge variant="outline" className="font-medium">
-                    {course.category}
-                  </Badge>
-                  <Badge variant="outline" className="font-medium">
-                    {course.level}
-                  </Badge>
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                {course.title}
+              </h1>
+              <p className="max-w-[600px] text-muted-foreground md:text-xl">
+                {course.description}
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <Star className="h-4 w-4 text-yellow-500" />
+                  <span className="font-medium">{course.rating}</span>
+                  <span className="text-muted-foreground">({course.reviewCount} avis)</span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <span className="font-bold text-amber-500">{course.rating.toFixed(1)}</span>
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-4 w-4 ${
-                          i < Math.floor(course.rating) ? "fill-amber-500 text-amber-500" : "fill-muted text-muted"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <span className="text-sm text-muted-foreground">({course.reviewCount} reviews)</span>
-                </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                   <Users className="h-4 w-4" />
-                  <span className="text-sm text-muted-foreground">{course.studentCount.toLocaleString()} students</span>
+                  <span className="text-muted-foreground">{course.studentCount.toLocaleString()} étudiants</span>
                 </div>
-              </div>
-              <div className="mt-2 text-sm text-muted-foreground">
-                Created by{" "}
-                <Link href="#" className="font-medium text-primary">
-                  {course.instructor}
-                </Link>
-              </div>
-              <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4" />
-                  <span>Last updated {course.lastUpdated}</span>
+                  <span className="text-muted-foreground">Dernière mise à jour {course.lastUpdated}</span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Globe className="h-4 w-4" />
-                  <span>{course.language}</span>
-                </div>
+              </div>
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Button size="lg" className="font-medium">
+                  Commencer le Cours
+                </Button>
+                <Button size="lg" variant="outline" className="font-medium">
+                  Ajouter aux Favoris
+                </Button>
               </div>
             </div>
 
             {/* Course Preview */}
-            <div className="relative aspect-video overflow-hidden rounded-lg border">
-              <Image src={course.image || "/placeholder.svg"} alt={course.title} fill className="object-cover" />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                <Button size="lg" variant="outline" className="gap-2 text-white hover:bg-primary hover:text-white">
-                  <PlayCircle className="h-5 w-5" />
-                  Preview Course
-                </Button>
-              </div>
+            <div className="flex items-center justify-center">
+              <Image
+                src={course.image}
+                alt={course.title}
+                width={500}
+                height={500}
+                className="rounded-lg object-cover"
+              />
             </div>
 
             {/* Course Tabs */}
             <Tabs defaultValue="overview" className="space-y-4">
               <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
-                <TabsTrigger value="reviews">Reviews</TabsTrigger>
+                <TabsTrigger value="overview">Aperçu</TabsTrigger>
+                <TabsTrigger value="curriculum">Programme</TabsTrigger>
+                <TabsTrigger value="reviews">Avis</TabsTrigger>
               </TabsList>
               <TabsContent value="overview" className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold">What You Will Learn</h3>
+                  <h3 className="text-xl font-semibold">Ce que vous allez apprendre</h3>
                   <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                     {course.whatYouWillLearn.map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
@@ -211,34 +219,34 @@ export default function CoursePage() {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold">Course Description</h3>
+                  <h3 className="text-xl font-semibold">Description du Cours</h3>
                   <div className="mt-4 space-y-4">
                     <p>
-                      Welcome to the WAEC Mathematics Complete Course! This comprehensive program is designed to help
-                      you excel in your WAEC Mathematics examination. Whether you're struggling with specific topics or
-                      aiming for an A1, this course has everything you need to succeed.
+                      Bienvenue dans le Cours Complet de Mathématiques BPEC ! Ce programme complet est conçu pour vous aider
+                      à exceller dans votre examen de mathématiques BPEC. Que vous ayez des difficultés avec des sujets spécifiques ou
+                      que vous visiez un A1, ce cours a tout ce dont vous avez besoin pour réussir.
                     </p>
                     <p>
-                      The course is structured to follow the WAEC Mathematics syllabus, ensuring that you cover all the
-                      required topics. Each section includes detailed video explanations, worked examples, and practice
-                      questions to reinforce your understanding.
+                      Le cours est structuré pour suivre le programme de mathématiques BPEC, vous assurant de couvrir tous les
+                      sujets requis. Chaque section comprend des explications vidéo détaillées, des exemples résolus et des questions
+                      d'entraînement pour renforcer votre compréhension.
                     </p>
                     <p>
-                      You'll also get access to past WAEC questions with step-by-step solutions, helping you familiarize
-                      yourself with the examination pattern and question types. Our time-saving tips and examination
-                      strategies will give you the confidence to tackle any question that comes your way.
+                      Vous aurez également accès aux questions des examens BPEC précédents avec des solutions étape par étape, vous aidant
+                      à vous familiariser avec le format de l'examen et les types de questions. Nos astuces pour gagner du temps et nos
+                      stratégies d'examen vous donneront la confiance nécessaire pour aborder n'importe quelle question.
                     </p>
                     <p>
-                      By the end of this course, you'll have a solid understanding of all mathematical concepts required
-                      for WAEC, improved problem-solving skills, and the ability to apply mathematical principles to
-                      real-world situations.
+                      À la fin de ce cours, vous aurez une solide compréhension de tous les concepts mathématiques requis
+                      pour le BPEC, des compétences améliorées en résolution de problèmes et la capacité d'appliquer les principes
+                      mathématiques à des situations réelles.
                     </p>
                   </div>
                 </div>
               </TabsContent>
               <TabsContent value="curriculum" className="space-y-4">
                 <div>
-                  <h3 className="text-xl font-semibold">Course Content</h3>
+                  <h3 className="text-xl font-semibold">Contenu du Cours</h3>
                   <div className="mt-2 text-sm text-muted-foreground">
                     {course.courseContent.reduce((total, section) => total + section.lessons.length, 0)} lessons •{" "}
                     {Math.floor(
@@ -344,17 +352,22 @@ export default function CoursePage() {
             <div className="sticky top-20">
               <Card>
                 <CardContent className="p-6 space-y-4">
-                  <div className="text-3xl font-bold">₦{course.price.toLocaleString()}</div>
-                  <div className="space-y-2">
-                    <Button className="w-full gap-2">
-                      <ShoppingCart className="h-4 w-4" />
-                      Add to Cart
-                    </Button>
-                    <Button variant="outline" className="w-full">
-                      Buy Now
-                    </Button>
+                  <div className="flex items-center gap-2">
+                    <span className="text-3xl font-bold line-through text-muted-foreground">3 500 CFA</span>
+                    <span className="text-3xl font-bold text-green-600">Gratuit</span>
                   </div>
-                  <div className="text-sm text-center text-muted-foreground">30-Day Money-Back Guarantee</div>
+                  <div className="space-y-2">
+                    <Button variant="outline" className="w-full gap-2" disabled>
+                      <ShoppingCart className="h-4 w-4" />
+                      Bientôt Disponible
+                    </Button>
+                    <Link href="/waitlist">
+                      <Button className="w-full">
+                        Rejoindre la Liste d'Attente
+                      </Button>
+                    </Link>
+                  </div>
+                  <div className="text-sm text-center text-muted-foreground">Garantie de Remboursement de 30 Jours</div>
                   <div className="space-y-2">
                     <h4 className="font-medium">This Course Includes:</h4>
                     <ul className="space-y-2 text-sm">

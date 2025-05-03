@@ -4,10 +4,11 @@ import type React from "react"
 
 import { useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { Filter, SearchIcon } from "lucide-react"
+import { Filter, SearchIcon, SortAsc } from "lucide-react"
+import { Link } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -238,11 +239,21 @@ export default function SearchPage() {
       <main className="container py-8">
         <div className="flex flex-col space-y-6">
           {/* Search Header */}
-          <div>
-            <h1 className="text-3xl font-bold">Search Results</h1>
-            <p className="text-muted-foreground mt-2">
-              {query ? `Showing results for "${query}"` : "Browse all courses"}
+          <div className="flex flex-col space-y-2">
+            <h1 className="text-2xl font-semibold tracking-tight">Rechercher</h1>
+            <p className="text-sm text-muted-foreground">
+              Trouvez les cours, quiz et compétitions qui vous intéressent
             </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <Button variant="outline" size="sm">
+              <Filter className="mr-2 h-4 w-4" />
+              Filtrer
+            </Button>
+            <Button variant="outline" size="sm">
+              <SortAsc className="mr-2 h-4 w-4" />
+              Trier
+            </Button>
           </div>
 
           {/* Search Form */}
