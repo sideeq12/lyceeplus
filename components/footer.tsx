@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <Image src="/logo.svg" alt="LyceePlus" width={40} height={40} />
+              {/* <Image src="/logo.svg" alt="LyceePlus" width={40} height={40} /> */}
               <span className="font-bold">LyceePlus</span>
             </Link>
             <p className="text-sm text-muted-foreground">

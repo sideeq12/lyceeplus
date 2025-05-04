@@ -134,7 +134,7 @@ function MobileNav() {
       <SheetContent side="left">
         <div className="flex flex-col gap-4">
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/logo.svg" alt="LyceePlus" width={40} height={40} />
+            {/* <Image src="/logo.svg" alt="LyceePlus" width={40} height={40} /> */}
             <span className="font-bold">LyceePlus</span>
           </Link>
           <nav className="flex flex-col gap-4">
